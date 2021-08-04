@@ -3,6 +3,9 @@ module.exports = {
     browser: true,
     es2021: true,
   },
+  globals: {
+    JSX: 'readonly',
+  },
   extends: [
     'plugin:react/recommended',
     'plugin:react-hooks/recommended',
@@ -31,7 +34,8 @@ module.exports = {
   plugins: ['react', '@typescript-eslint', 'jest'],
   rules: {
     'no-use-before-define': 'off',
-    '@typescript-eslint/no-use-before-define': ['error'],
+    '@typescript-eslint/no-use-before-define': 'error',
+    '@typescript-eslint/explicit-function-return-type': 'error',
     'react/jsx-filename-extension': [
       2,
       { extensions: ['.js', '.jsx', '.ts', '.tsx'] },
