@@ -17,6 +17,7 @@ function UseDarkMode(): [boolean, string, () => void] {
     if (localTheme !== null) setTheme(localTheme)
     setMountedComponent(true)
   }, [])
+
   return [mountedComponent, theme, themeToggler]
 }
 

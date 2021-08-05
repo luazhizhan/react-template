@@ -7,9 +7,9 @@ const Button = styled.button`
   color: ${({ theme }): string => theme.text};
   border-radius: 30px;
   cursor: pointer;
-  font-size:0.8rem;
+  font-size: 0.8rem;
   padding: 0.6rem;
-  }`
+`
 
 function Toggle({ toggleTheme }: { toggleTheme: () => void }): JSX.Element {
   return <Button onClick={toggleTheme}>Switch Theme</Button>
