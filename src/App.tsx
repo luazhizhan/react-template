@@ -1,25 +1,31 @@
 import React from 'react'
-import logo from './logo.svg'
-import './App.css'
+import styled, { ThemeProvider } from 'styled-components'
+import UseDarkMode from './components/UseDarkMode'
+import GlobalStyles from './themes/Globalstyles'
+import { lightTheme, darkTheme } from './themes/Themes'
+import Content from './components/Content'
+import Navigation from './components/Navigation'
+import Toggle from './components/Toggler'
+
+const Container = styled.div`
+  text-align: center;
+`
 
 function App(): JSX.Element {
+  const [mountedComponent, theme, themeToggler] = UseDarkMode()
+  const themeMode = theme === 'light' ? lightTheme : darkTheme
+
+  if (mountedComponent === false) return <div />
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={themeMode}>
+      <GlobalStyles />
+      <Container>
+        <Navigation>
+          <Toggle toggleTheme={themeToggler} />
+        </Navigation>
+        <Content />
+      </Container>
+    </ThemeProvider>
   )
 }
 
